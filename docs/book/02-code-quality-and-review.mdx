@@ -1,0 +1,85 @@
+---
+title: Code Quality and Review
+description: Chapter 2 - consistency, automated checks, and code review that improves code.
+---
+
+Quality is not a heroic final pass; it is a set of small, automatic
+guarantees plus a review culture that catches what machines cannot.
+
+## By the end of this chapter
+
+You will know how to automate the boring 80% of quality (format, lint,
+types) and how to run reviews that leave code better than they found it.
+
+## Automate the boring 80%
+
+Order of operations, cheapest first:
+
+1. **Formatting** - one formatter, no style debates. Configure it in the
+   repo and let the editor run it on save.
+2. **Linting** - catch real defects (unused code, unreachable branches,
+   suspicious patterns), not just style. Turn off rules that produce noise
+   on your codebase; noisy linters get ignored.
+3. **Types** - make invalid states unrepresentable. A type error found by
+   the compiler costs seconds; the same bug found in production costs a
+   release.
+
+Everything above runs in one command - the same one locally and in CI (see
+[Project Commands](/docs/reference/project-commands)).
+
+:::tip
+
+A check nobody runs is not a check. Wire format, lint, and typecheck into
+a single `verify` script and make it a prerequisite for merging.
+:::
+
+## Prefer small, complete changes
+
+- One concern per change. A refactor mixed with a feature cannot be
+  reviewed safely.
+- Each commit should build and pass checks on its own - history is a
+  debugging tool.
+- If a change is large by nature, split it: mechanical changes (rename,
+  move) first, behavior changes second.
+
+## Code review as a craft
+
+The author's job is to make the review easy; the reviewer's job is to be
+useful, not clever.
+
+**Authors:**
+
+- Write a description that says _why_, and what reviewers should look at
+  first.
+- Self-review the diff before requesting review - fix anything you would
+  comment on yourself.
+- Mark drafts clearly; do not fish for feedback on unfinished work.
+
+**Reviewers:**
+
+- Start with the design: does this change belong here? Are the names
+  right? Is the failure path handled?
+- Distinguish **blocking** issues ("this breaks correctness") from
+  **nitpicks** (label them so the author can batch-accept).
+- Ask questions instead of issuing verdicts: "what happens when the input
+  is empty?" ages better than "this is wrong".
+- Respond promptly. Slow review is the hidden cost of small changes.
+
+## The review checklist
+
+- [ ] Correct for the stated requirements, including edge cases.
+- [ ] Names describe intent; no comments restating the code.
+- [ ] Errors are handled where they occur, not swallowed upstream.
+- [ ] Nothing sensitive (secrets, personal data) enters the diff.
+- [ ] Tests changed alongside behavior.
+- [ ] Docs changed alongside public behavior.
+
+## Key takeaways
+
+- Automate style and correctness checks so reviews can focus on design.
+- Small, single-purpose changes are the unit of high-quality work.
+- Good review asks questions, separates blocking from nitpick, and is
+  fast.
+
+Next: [Testing Strategies](/docs/book/testing-strategies) - proving the
+code does what it claims.

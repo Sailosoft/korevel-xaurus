@@ -1,0 +1,87 @@
+---
+title: Setting Up Your Environment
+description: Chapter 1 - a reproducible development environment you can rebuild in an hour.
+---
+
+A good environment is boring: same tools, same versions, same steps on
+every machine. This chapter builds one you can recreate from scratch in
+about an hour.
+
+## By the end of this chapter
+
+You will have a documented, reproducible setup: pinned runtimes, an editor
+with shared settings, and a repository that tells a new machine exactly
+what it needs.
+
+## Pin your runtimes
+
+Install versions from your team's supported list, not whatever is newest:
+
+- **Language runtimes** (Node, Python, Go...) - use a version manager so
+  the version lives in the repository (`.nvmrc`, `.node-version`,
+  `.tool-versions`) rather than in someone's memory.
+- **Package managers** - commit the lockfile and install with the exact
+  install command (`npm ci` for npm projects: identical versions for
+  everyone, every time).
+- **System tools** (Git, Docker) - document minimum versions in the repo
+  README.
+
+:::caution
+
+Never commit a change that updates a lockfile "incidentally". Dependency
+changes belong in their own commit with a reason in the message.
+:::
+
+## Make the editor shareable
+
+Team-wide editor behavior should be versioned alongside the code:
+
+- Commit the workspace settings folder (formatting rules, lint config,
+  file exclusions) so style is enforced by the editor, not by review
+  comments.
+- Add extensions to a recommended-extensions list so onboarding is one
+  click.
+- Disable auto-format-on-save for file types nobody owns; it creates noisy
+  diffs in generated files.
+
+## One-time repository setup
+
+```bash
+git clone <your-repository-url>
+cd <repository>
+npm ci               # or your platform's exact-install equivalent
+npm run start        # verify the app boots before changing anything
+```
+
+If the app does not boot on a clean machine, the environment is not done -
+fix that first. Onboarding friction compounds: every person who silently
+works around it teaches the next person that the setup is "normal".
+
+## Script it
+
+Anything you did by hand twice should become a script checked into the
+repository:
+
+- `setup` - install system dependencies, runtimes, and packages.
+- `verify` - format, lint, typecheck, test. The same entry point in CI.
+- `dev` - start the local stack.
+
+Scripts are documentation that cannot drift: if a step changes, the script
+changes in the same commit.
+
+## Verify your setup
+
+- [ ] Fresh clone + one command brings up a working environment.
+- [ ] Runtimes are pinned by a file in the repository.
+- [ ] Lockfile committed; installs are exact and reproducible.
+- [ ] Editor settings are shared through the repository.
+- [ ] `verify` passes locally without extra flags.
+
+## Key takeaways
+
+- Reproducibility beats convenience: pin everything, commit the pins.
+- The repository should be able to explain its own setup.
+- If onboarding needs a person to intervene, treat it as a defect.
+
+Next: [Code Quality and Review](/docs/book/code-quality-and-review) -
+keeping the code worth working in.

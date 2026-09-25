@@ -1,0 +1,107 @@
+---
+title: Docusaurus Configuration Reference
+description: What each part of docusaurus.config.ts controls in this project.
+sidebar_position: 2
+---
+
+Every site-level setting lives in `docusaurus.config.ts`. This page lists
+what each block does here and when to touch it.
+
+## Site identity
+
+```ts
+title: 'Korevel Xaurus',
+tagline: 'A personal knowledge base — guides, docs, and books.',
+favicon: 'img/favicon.svg',
+```
+
+`title` appears in the navbar, the hero, and browser tabs. `tagline` shows
+under the hero title and is reused as the homepage meta description.
+
+## URLs
+
+```ts
+url: 'https://your-docusaurus-site.example.com',
+baseUrl: '/',
+```
+
+| Field | Meaning |
+| --- | --- |
+| `url` | Absolute origin of the deployed site. Used for canonical URLs and metadata. Placeholder until a real domain exists. |
+| `baseUrl` | Path prefix the site is served under. `/` for a root domain; would be `/repo-name/` for a sub-path host. |
+
+## Broken links
+
+```ts
+onBrokenLinks: 'throw',
+```
+
+The build fails on any dead internal link. This is the safety net for the
+content workflow - fix the link, do not downgrade this setting.
+
+## Presets
+
+```ts
+presets: [
+  ['classic', {
+    docs: {sidebarPath: './sidebars.ts'},
+    theme: {customCss: './src/css/custom.css'},
+  }],
+],
+```
+
+- The `classic` preset bundles docs, pages, and the theme. The blog plugin
+  is not configured - this site has no blog.
+- `sidebarPath` points at `sidebars.ts`, which defines the three section
+  sidebars.
+- `customCss` is where the soft-blue palette and animated gradients live.
+
+## Navbar
+
+```ts
+navbar: {
+  title: 'Korevel Xaurus',
+  logo: {alt: 'Korevel Xaurus Logo', src: 'img/logo.svg'},
+  items: [
+    {type: 'docSidebar', sidebarId: 'guidesSidebar', position: 'left', label: 'Guides'},
+    {type: 'docSidebar', sidebarId: 'docsSidebar', position: 'left', label: 'Docs'},
+    {type: 'docSidebar', sidebarId: 'bookSidebar', position: 'left', label: 'Book'},
+  ],
+},
+```
+
+`docSidebar` items deep-link to their sidebar's first page and highlight
+while you read that section. This site intentionally has **no external
+navbar links**.
+
+## Footer
+
+The footer is configured with a single `Docs` column linking to
+`/docs/guides`, `/docs/reference`, and `/docs/book`, plus the copyright
+line. Like the navbar, it contains no outbound links.
+
+## Prism (code highlighting)
+
+```ts
+prism: {
+  theme: prismThemes.github,      // light mode
+  darkTheme: prismThemes.dracula, // dark mode
+},
+```
+
+## Color mode
+
+```ts
+colorMode: {respectPrefersColorScheme: true},
+```
+
+The site follows the operating system preference on first visit and lets
+the reader toggle manually afterwards.
+
+## Where styles are configured
+
+| File | Contains |
+| --- | --- |
+| `src/css/custom.css` | Infima palette overrides, gradient variables, keyframes, animated accents. |
+| `src/pages/index.module.css` | Homepage hero layout (hero background animation is applied via a global class). |
+| `src/components/HomepageFeatures/styles.module.css` | Icon circles and card link styles on the homepage. |

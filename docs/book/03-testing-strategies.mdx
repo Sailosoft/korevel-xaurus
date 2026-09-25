@@ -1,0 +1,88 @@
+---
+title: Testing Strategies
+description: Chapter 3 - what to test, at which layer, and how to keep the suite fast.
+---
+
+Tests are a safety net for change. The strategy is about placing the right
+kind of test at the right layer - not about maximizing a number.
+
+## By the end of this chapter
+
+You will be able to pick a test layer deliberately, write tests that
+document behavior, and keep the suite fast enough to run all the time.
+
+## The three layers
+
+| Layer | Talks to | Speed | Share of suite |
+| --- | --- | --- | --- |
+| Unit | Nothing external - pure functions and isolated modules | Milliseconds | Most tests |
+| Integration | Real collaborators: database, filesystem, HTTP within the process | Seconds | Meaningful slice |
+| End-to-end | The deployed-style application through the UI/API | Minutes | Handful of critical journeys |
+
+The classic mistake is writing end-to-end tests for everything: they are
+slow, flaky, and painful to debug. Push each assertion down to the lowest
+layer that can still prove it.
+
+## What deserves a test
+
+Test behavior, not implementation:
+
+- **Business rules** - anything a stakeholder could argue about belongs in
+  a test with its edge cases.
+- **Boundaries** - parsing, validation, serialization: where messy input
+  becomes structured data.
+- **Past bugs** - every bug fix gets a regression test that fails without
+  the fix. This is the cheapest test to write because you already know the
+  expected behavior.
+
+Skip tests that merely restate the code (getter returns the field), or
+that need rewriting every time you refactor - they test structure, not
+behavior.
+
+## Writing tests that document
+
+A good test reads like a specification:
+
+```text
+given  a cart with two items
+when   a discount code is applied
+then  the total drops by the code's percentage
+and   the discount appears as its own line
+```
+
+- One behavior per test; name it with the scenario, not the method.
+- Build fixtures with helpers so each test sets up only what it cares
+  about.
+- Assert on observable outcomes (returned value, emitted event, stored
+  state) rather than internal call counts.
+
+:::caution
+
+Flaky tests are worse than no tests: they teach everyone to re-run CI
+instead of reading the failure. Quarantine a flaky test immediately and
+either fix or delete it.
+:::
+
+## Keeping the suite fast
+
+- Run unit tests on every save, integration tests on every push, end-to-end
+  tests on merge - see [Continuous Integration and Delivery](/docs/book/continuous-integration-and-delivery).
+- Parallelize by default; tests that share global state cannot parallelize
+  and will eventually conflict.
+- Measure the suite. If it takes minutes, find the slowest tests first -
+  fixing the top five usually halves the total.
+
+## Coverage as a spotlight, not a score
+
+Coverage shows which lines were never executed - use it to find blind
+spots, not to celebrate a percentage. A covered line with no meaningful
+assertion is theater.
+
+## Key takeaways
+
+- Put each assertion at the lowest layer that can still prove it.
+- Test behavior and edge cases; every bug fix earns a regression test.
+- A fast, deterministic suite is a feature - protect it fiercely.
+
+Next: [Continuous Integration and Delivery](/docs/book/continuous-integration-and-delivery)
+- turning green tests into safe releases.

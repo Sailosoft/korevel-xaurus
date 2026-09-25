@@ -1,0 +1,117 @@
+---
+title: Markdown and MDX Syntax Reference
+description: The Markdown and MDX constructs supported on this site, with copy-paste examples.
+sidebar_position: 3
+---
+
+Every content file is MDX: standard Markdown plus JSX when you need it.
+This page is the quick lookup for what is supported here.
+
+## Headings and structure
+
+```md
+## Second-level heading
+### Third-level heading
+```
+
+The page title comes from front matter - do not repeat it as a `#` heading.
+
+## Emphasis and lists
+
+```md
+**bold**, _italic_, `inline code`, ~~strikethrough~~
+
+- unordered item
+- another item
+
+1. ordered first
+2. ordered second
+
+- [ ] task not done
+- [x] task done
+```
+
+## Tables
+
+```md
+| Column | Column |
+| --- | --- |
+| cell   | cell   |
+```
+
+## Code blocks
+
+Fence with a language for syntax highlighting:
+
+````md
+```ts
+const greeting: string = 'hello';
+```
+````
+
+(That example is nested inside its own fence - in a real page just write
+the three backticks directly.)
+
+## Links and images
+
+```md
+[link text](/docs/reference/markdown-mdx-reference)   // internal page
+![alt text](/img/logo.svg)                            // image from static/
+```
+
+Internal links use absolute paths. External links are not used on this
+site.
+
+## Admonitions
+
+```md
+:::note Title
+Neutral information.
+:::
+
+:::tip
+Recommended practice.
+:::
+
+:::info
+Worth knowing, not urgent.
+:::
+
+:::caution
+Can cause problems if ignored.
+:::
+
+:::danger
+Destructive or irreversible outcomes.
+:::
+```
+
+## Front matter
+
+```yaml
+---
+title: Page Title
+description: Meta description sentence.
+sidebar_position: 4
+---
+```
+
+## MDX extras
+
+Because files are MDX you can drop in small JSX:
+
+```jsx
+<span style={{color: 'var(--ifm-color-primary)'}}>accent text</span>
+```
+
+Two gotchas to remember:
+
+- Literal `{`, `}`, `<`, and `>` in prose must be wrapped in backticks or
+  the MDX parser will try to evaluate them.
+- `import` statements belong at the very top of the file, after front
+  matter.
+
+## Math and diagrams
+
+Not enabled in this project. Use code blocks for formulas and keep
+diagrams as images in `static/img/` if needed.

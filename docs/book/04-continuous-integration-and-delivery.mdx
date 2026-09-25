@@ -1,0 +1,79 @@
+---
+title: Continuous Integration and Delivery
+description: Chapter 4 - pipelines that build once, verify everything, and ship safely.
+---
+
+Continuous integration means every change is integrated and verified within
+minutes. Continuous delivery means every verified change is releasable on
+demand.
+
+## By the end of this chapter
+
+You will be able to design a pipeline that gives fast feedback, produces
+one artifact per change, and makes deploying routine instead of tense.
+
+## The pipeline stages
+
+Run stages from cheapest to fastest-failing, so broken work is caught in
+seconds, not minutes:
+
+1. **Install** - exact dependencies from the lockfile (`npm ci`). No
+   floating versions, ever.
+2. **Static checks** - format, lint, typecheck. These catch half of all
+   defects before any test runs.
+3. **Unit tests** - fast and parallel.
+4. **Build** - one production artifact, created once.
+5. **Integration tests** - against the built artifact, with real
+   dependencies (containers for databases, queues, and so on).
+6. **End-to-end tests** - a handful of critical journeys against a
+   deployed-style instance.
+
+:::tip
+
+The whole pipeline should be predictable: same commands, same containers,
+same versions as local development ([Setting Up Your Environment](/docs/book/setting-up-your-environment)).
+"If it works locally but not in CI" is a broken environment, not a
+mystery.
+:::
+
+## Build once, promote everywhere
+
+The artifact tested in CI is the artifact that reaches production - do not
+rebuild per environment. Tag the artifact with the commit SHA so any
+deployment can be traced back to exactly what was reviewed.
+
+## Trunk-based habits
+
+- Small changes, merged to the main branch multiple times a day.
+- Feature flags for incomplete work, so "merged" and "released" are
+  independent decisions.
+- Broken main is fixed forward immediately (revert first, diagnose
+  second) - a red main trains everyone to ignore red.
+
+## Deployment safety
+
+| Practice | What it buys you |
+| --- | --- |
+| Preview deployments per branch | Review the real thing, not a screenshot. |
+| Staged rollout / canary | Limit blast radius while real traffic arrives. |
+| Health checks and auto-rollback | Bad releases end themselves. |
+| One-click (or auto) rollback | Recovery measured in seconds. |
+
+Secrets stay in the CI system's secret store - never in the repository.
+Rotate them like you mean it, and scope each secret to the least access
+its job needs.
+
+## Lead time and recovery
+
+Track four numbers: **lead time** (commit to production), **deployment
+frequency**, **change failure rate**, and **time to restore service**.
+Improving them is the point of the whole pipeline; the dashboard is not.
+
+## Key takeaways
+
+- Fail fast: cheap static checks first, slow end-to-end last.
+- Build once, promote the same artifact, trace it to the commit.
+- Make releases boring with previews, staged rollouts, and fast rollback.
+
+Next: [Writing Documentation](/docs/book/writing-documentation) -
+keeping knowledge inside the repository.

@@ -1,11 +1,32 @@
 .features {
   display: flex;
   align-items: center;
-  padding: 2rem 0;
+  padding: 3rem 0;
   width: 100%;
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
+.featureIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--ifm-color-primary) 14%, transparent);
+  color: var(--ifm-color-primary);
+}
+
+.featureIcon svg {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.featureLink {
+  color: var(--ifm-color-heading);
+  transition: color 0.2s ease;
+}
+
+.featureLink:hover {
+  color: var(--ifm-color-primary);
 }

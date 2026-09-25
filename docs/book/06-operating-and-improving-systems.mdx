@@ -1,0 +1,91 @@
+---
+title: Operating and Improving Systems
+description: Chapter 6 - observability, incidents, and the feedback loop that makes systems better.
+---
+
+Shipping is the midpoint, not the finish line. Operations is how you learn
+what your software actually does under real load - and how that learning
+flows back into the next change.
+
+## By the end of this chapter
+
+You will know what to observe, how to run an incident calmly, and how to
+turn every incident into a permanent improvement.
+
+## Observe the four signals
+
+Instrument these from day one:
+
+| Signal | Question it answers | Example |
+| --- | --- | --- |
+| Latency | How long do requests take? | p50/p95/p99 response time |
+| Traffic | How much is being asked of the system? | requests per minute |
+| Errors | How much is failing? | 5xx rate, failed jobs |
+| Saturation | How close to the limit are we? | CPU, memory, queue depth |
+
+Alert on **symptoms users feel** (error rate, latency), not on causes
+(high CPU). Pages that fire on causes create noise; pages that fire on
+symptoms create urgency.
+
+:::tip
+
+Every alert must link to a runbook - the checklist an on-call engineer
+follows at 3 a.m. An alert without a runbook is a notification, not
+support.
+:::
+
+## Run incidents calmly
+
+1. **Acknowledge and assign.** One incident lead; their job is
+   coordination, not typing.
+2. **Mitigate first, diagnose second.** Roll back, fail over, shed load -
+   restore service before finding the root cause. (This is why the
+   pipeline keeps artifacts per commit - see
+   [Continuous Integration and Delivery](/docs/book/continuous-integration-and-delivery).)
+3. **Communicate on a schedule.** A short update every 30 minutes, even
+   "still investigating", beats silence.
+4. **Write down the timeline as it happens.** Timestamped actions are the
+   raw material of the postmortem.
+
+## Postmortems without blame
+
+A blameless postmortem studies the conditions that made the mistake
+reasonable:
+
+- Timeline: what was observed, decided, and changed, with timestamps.
+- Contributing factors: code, config, process, capacity, assumptions.
+- Action items: each with an owner and a date, prioritized by how much
+  they reduce likelihood or impact.
+
+Fix the system, not the person: "the deploy skipped canary because no one
+owned that gate" leads to a gate; "Alice should have been more careful"
+leads to the same incident with a different name.
+
+## Improve on a rhythm
+
+- **After every incident** - postmortem action items, tracked to
+  completion.
+- **Every sprint** - a small reliability budget: delete a noisy alert,
+  tighten a timeout, add one missing metric.
+- **Every quarter** - review the four signals from this chapter as
+  trends; pick the one that is worst and make it the next quarter's
+  focus.
+
+## Close the loop
+
+Operations produces the feedback that development needs: the alert that
+fired reveals the missing test; the runbook step reveals the missing
+script; the capacity wall reveals the next refactor. Feed it back through
+the same channels the rest of the handbook uses - tests, pipeline, docs -
+and the system gets a little more boring every release.
+
+## Key takeaways
+
+- Observe symptoms users feel; alert only where someone can act.
+- Mitigate first, diagnose second, and communicate on a schedule.
+- Blameless postmortems fix conditions, and their action items are
+  tracked like any other work.
+
+That concludes the Engineering Handbook. Return to the
+[Guides](/docs/guides/getting-started) for hands-on tasks, or keep the
+[Docs](/docs/reference) section open for look-ups.

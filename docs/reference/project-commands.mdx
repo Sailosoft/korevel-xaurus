@@ -1,0 +1,55 @@
+---
+title: Project Commands
+description: Every npm script in this repository and when to use it.
+sidebar_position: 4
+---
+
+All commands run from the repository root. On Windows PowerShell, use
+`npm.cmd` if script execution is disabled on your machine.
+
+## Everyday commands
+
+| Command | What it does |
+| --- | --- |
+| `npm run start` | Starts the dev server with live reload and opens the browser. |
+| `npm run build` | Production build into `build/`. Fails on broken internal links. |
+| `npm run serve` | Serves the existing `build/` output locally - use it to check the real production bundle. |
+| `npm run typecheck` | Runs the TypeScript compiler over the project (config, components, pages). |
+
+## Maintenance commands
+
+| Command | What it does |
+| --- | --- |
+| `npm run clear` | Deletes the Docusaurus cache. Use when transforms look stale or config changes misbehave. |
+| `npm run write-heading-ids` | Adds explicit heading IDs to content files so anchors survive heading edits. |
+| `npm run write-translations` | Extracts translateable strings - only relevant if locales are ever added. |
+| `npm run swizzle` | Interactive wizard for overriding a theme component. Reach for it only when CSS cannot do the job. |
+| `npm run docusaurus -- <args>` | Passes any raw Docusaurus CLI command through. |
+
+## Typical sessions
+
+Start writing:
+
+```bash
+npm run start
+```
+
+Before every commit:
+
+```bash
+npm run typecheck
+npm run build
+```
+
+Check the production bundle locally:
+
+```bash
+npm run build
+npm run serve
+```
+
+:::tip
+
+`npm run build` is the single most valuable check: it validates links,
+sidebars, and MDX syntax in one pass.
+:::

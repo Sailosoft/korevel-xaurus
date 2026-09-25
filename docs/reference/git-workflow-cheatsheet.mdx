@@ -1,0 +1,73 @@
+---
+title: Git Workflow Cheat Sheet
+description: The Git commands used in this repository, from daily commits to recovering lost work.
+sidebar_position: 1
+---
+
+A compact reference for the Git workflow used on this project.
+
+## Daily loop
+
+```bash
+git status                  # what changed?
+git diff                    # exact changes, unstaged
+git diff --staged           # exact changes, staged
+git add docs/guides         # stage a path (be specific)
+git commit -m "guides: fix broken link in getting-started"
+git pull                    # integrate remote work before pushing
+git push
+```
+
+## Branching
+
+```bash
+git switch -c fix/sidebar-order    # create and move to a branch
+git switch main                    # move back to main
+git branch --merged                # branches already in main
+git branch -d fix/sidebar-order    # delete a merged branch
+```
+
+Keep branches short-lived: one topic, one branch, merged quickly.
+
+## Reading history
+
+```bash
+git log --oneline -10              # compact recent history
+git log -- path/to/file.mdx        # history of one file
+git show <commit>                  # full change set of a commit
+git blame path/to/file.mdx         # who changed each line and when
+```
+
+## Undoing things
+
+| Goal | Command | Safe when... |
+| --- | --- | --- |
+| Unstage a file | `git restore --staged file` | Changes stay in the working tree. |
+| Discard local edits | `git restore file` | You are sure the edits are worthless. |
+| Undo last commit, keep edits | `git reset --soft HEAD~1` | Not pushed yet. |
+| Tidy untracked files | `git clean -nd` (dry run first) | Always dry-run before `-fd`. |
+
+:::caution
+
+`git restore` and `git clean` throw work away. Run `git status` and
+`git diff` first, and prefer `git stash` when you might want the changes
+back.
+:::
+
+## Stashing
+
+```bash
+git stash                  # shelve unfinished work
+git stash list             # what is shelved?
+git stash pop              # bring it back
+```
+
+## Recovering a lost commit
+
+```bash
+git reflog                 # every HEAD movement, including "lost" commits
+git switch -c recovered <commit-id>
+```
+
+The reflog keeps reachable history for roughly two weeks - act fast and you
+can almost always get work back.

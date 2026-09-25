@@ -4,27 +4,188 @@
  * work well for content-centric websites.
  */
 
-/* You can override the default Infima variables here. */
+/* Soft-blue Infima palette (light mode) */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #2f6fcf;
+  --ifm-color-primary-dark: #2a62b8;
+  --ifm-color-primary-darker: #2558a5;
+  --ifm-color-primary-darkest: #1e4a8a;
+  --ifm-color-primary-light: #4585de;
+  --ifm-color-primary-lighter: #5b96e6;
+  --ifm-color-primary-lightest: #7fb0ee;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  /* Seamless animated gradients: 5-stop A/B pattern tiles once per element
+     width when used with background-size: 200%. */
+  --kx-gradient: linear-gradient(
+    90deg,
+    #60a5fa,
+    #38bdf8,
+    #60a5fa,
+    #38bdf8,
+    #60a5fa
+  );
+  --kx-hero-gradient: linear-gradient(
+    90deg,
+    #1e3a8a,
+    #2563eb,
+    #1e3a8a,
+    #2563eb,
+    #1e3a8a
+  );
+  --kx-text-gradient: linear-gradient(
+    90deg,
+    #93c5fd,
+    #38bdf8,
+    #93c5fd,
+    #38bdf8,
+    #93c5fd
+  );
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
+  --ifm-color-primary: #8ab4f8;
+  --ifm-color-primary-dark: #7aa9f5;
+  --ifm-color-primary-darker: #6f9ff3;
+  --ifm-color-primary-darkest: #5b8ce8;
+  --ifm-color-primary-light: #9ac0f9;
+  --ifm-color-primary-lighter: #a8c9fa;
+  --ifm-color-primary-lightest: #bcd7fc;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  --kx-gradient: linear-gradient(
+    90deg,
+    #38bdf8,
+    #60a5fa,
+    #38bdf8,
+    #60a5fa,
+    #38bdf8
+  );
+  --kx-hero-gradient: linear-gradient(
+    90deg,
+    #172554,
+    #1e40af,
+    #172554,
+    #1e40af,
+    #172554
+  );
+}
+
+/* Animated gradient keyframes.
+   With background-size: 200%, moving background-position from 0% to 100%
+   shifts the gradient by exactly one pattern period - a seamless loop. */
+@keyframes kx-gradient-shift {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+/* Animated hero background */
+.kx-animated-bg {
+  background-image: var(--kx-hero-gradient);
+  background-size: 200% auto;
+  animation: kx-gradient-shift 14s linear infinite;
+}
+
+/* Animated gradient text (used on the hero title over the hero gradient) */
+.kx-gradient-text {
+  background-image: var(--kx-text-gradient);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: kx-gradient-shift 8s linear infinite;
+}
+
+/* Animated gradient hairline under the navbar */
+.navbar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background-image: var(--kx-gradient);
+  background-size: 200% 100%;
+  animation: kx-gradient-shift 10s linear infinite;
+  pointer-events: none;
+}
+
+/* Animated gradient primary button */
+.button--primary {
+  background-color: var(--ifm-color-primary);
+  background-image: var(--kx-gradient);
+  background-size: 200% auto;
+  border: none;
+  color: #fff;
+  animation: kx-gradient-shift 6s linear infinite;
+  transition: filter 0.2s ease;
+}
+
+.button--primary:hover,
+.button--primary:focus-visible {
+  color: #fff;
+  filter: brightness(1.08);
+}
+
+/* Hero buttons: crisp white on the deep-blue hero, gradient fill on hover */
+.hero .button--secondary {
+  background-color: #fff;
+  color: var(--ifm-color-primary-darkest);
+}
+
+.hero .button--secondary:hover,
+.hero .button--secondary:focus-visible {
+  background-color: transparent;
+  background-image: var(--kx-hero-gradient);
+  background-size: 200% auto;
+  color: #fff;
+  animation: kx-gradient-shift 4s linear infinite;
+}
+
+/* Animated gradient underline on navbar and footer links */
+.navbar__link,
+.footer__link-item {
+  position: relative;
+}
+
+.navbar__link::after,
+.footer__link-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 2px;
+  background-image: var(--kx-gradient);
+  background-size: 200% 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.25s ease;
+  animation: kx-gradient-shift 3s linear infinite;
+}
+
+.navbar__link:hover::after,
+.navbar__link--active::after,
+.footer__link-item:hover::after {
+  transform: scaleX(1);
+}
+
+/* Respect reduced-motion preferences: freeze every gradient animation */
+@media (prefers-reduced-motion: reduce) {
+  .kx-animated-bg,
+  .kx-gradient-text,
+  .navbar::after,
+  .button--primary,
+  .hero .button--secondary:hover,
+  .navbar__link::after,
+  .footer__link-item::after {
+    animation: none !important;
+  }
 }

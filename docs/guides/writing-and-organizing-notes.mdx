@@ -1,0 +1,93 @@
+---
+title: Writing and Organizing Notes
+description: Conventions for structuring Markdown content across guides, docs, and the book.
+sidebar_position: 2
+---
+
+Good organization is what keeps a knowledge base useful a year from now.
+This guide covers the conventions used in Korevel Xaurus.
+
+## Choose the right section
+
+- **Guides** (`docs/guides/`) - content that answers _"how do I do X?"_ A
+  guide has a beginning (prerequisites), a middle (numbered steps), and an
+  end (a working result).
+- **Docs** (`docs/reference/`) - content that answers _"what is the exact
+  syntax/flag/setting for X?"_ Reference pages are scannable: tables, short
+  definition lists, and code blocks beat prose.
+- **Book** (`docs/book/`) - content that is meant to be read in order. If
+  chapters only make sense together, it belongs in the book.
+
+If you are unsure, write it as a guide first. Material that grows into a
+longer, ordered read can be promoted to the book later.
+
+## File layout
+
+```text
+docs/
+├── guides/          # how-to guides (ordered by sidebar_position)
+├── reference/       # lookup docs (ordered by sidebar_position)
+└── book/            # Engineering Handbook chapters (ordered by NN- prefix)
+```
+
+- Guides and reference pages are ordered with `sidebar_position` in front
+  matter.
+- Book chapters are ordered by the numeric filename prefix (`01-`, `02-`,
+  ...). See [Adding a Book Chapter](/docs/guides/adding-a-book-chapter).
+
+## Front matter
+
+Every page starts with front matter:
+
+```yaml
+---
+title: Writing and Organizing Notes
+description: One sentence used for search results and page metadata.
+sidebar_position: 2
+---
+```
+
+- `title` becomes the page heading and the sidebar label. Write it in
+  sentence case, without a number prefix.
+- `description` should be a single useful sentence.
+- Only add `sidebar_position` where ordering matters (guides/reference).
+
+## Linking pages
+
+Link internally with absolute paths so links stay valid from anywhere:
+
+```md
+See the [Git Workflow Cheat Sheet](/docs/reference/git-workflow-cheatsheet).
+```
+
+Never paste external URLs into content - this site is deliberately free of
+outbound links. If you need to reference something off-site, name it in
+prose instead.
+
+## Emphasizing with admonitions
+
+Docusaurus supports callouts:
+
+```md
+:::note
+A neutral callout.
+:::
+
+:::tip
+The most useful kind - use it for shortcuts and best practices.
+:::
+
+:::caution
+Use for anything that can silently break.
+:::
+```
+
+## Style rules
+
+1. One idea per page. Split when a page tries to teach two things.
+2. Lead with the outcome: the first paragraph says what the reader will be
+   able to do.
+3. Prefer numbered steps for procedures and tables for look-ups.
+4. Keep sentences short. Cut anything that does not help the reader finish.
+5. Run `npm run typecheck` and `npm run build` before committing - the build
+   fails on broken internal links.

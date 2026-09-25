@@ -1,0 +1,77 @@
+---
+title: Adding a Book Chapter
+description: How to write, order, and review a new chapter of the Engineering Handbook.
+sidebar_position: 3
+---
+
+The Engineering Handbook lives in `docs/book/`. Each chapter is one file,
+and the numeric filename prefix controls the reading order.
+
+## Create the chapter
+
+1. Look at the existing chapters and pick the next number:
+
+   ```text
+   docs/book/
+   ├── 01-setting-up-your-environment.mdx
+   ├── 02-code-quality-and-review.mdx
+   ├── 03-testing-strategies.mdx
+   ├── 04-continuous-integration-and-delivery.mdx
+   ├── 05-writing-documentation.mdx
+   └── 06-operating-and-improving-systems.mdx
+   ```
+
+2. Create a file named `NN-your-chapter-slug.mdx` using a lowercase,
+   hyphenated slug.
+
+3. Add front matter. The title has no number prefix - the prefix is only
+   for ordering:
+
+   ```yaml
+   ---
+   title: Your Chapter Title
+   description: One sentence summarizing the chapter.
+   ---
+   ```
+
+## Write the chapter body
+
+Chapters are read linearly, so each one follows the same shape:
+
+1. **Opening** - what the reader will know how to do by the end.
+2. **Sections** - two to five `##` sections, each self-contained.
+3. **Examples** - short code blocks or checklists instead of long
+   paragraphs.
+4. **Key takeaways** - a closing bullet list the reader can skim.
+
+Link out to related material in other sections, for example
+[Writing and Organizing Notes](/docs/guides/writing-and-organizing-notes)
+for prose conventions or the [Project Commands](/docs/reference/project-commands)
+reference while editing.
+
+## Check the result
+
+```bash
+npm run start
+```
+
+Open the Book in the navbar and confirm:
+
+- The chapter appears in sidebar order (prefix, not alphabetically).
+- Prev/next at the bottom of the page flows to the neighbouring chapters.
+- No broken-link warnings in the terminal.
+
+Then run the full validation before committing:
+
+```bash
+npm run build
+```
+
+The build treats broken internal links as errors, so it will catch a typo
+in any link you added.
+
+:::caution
+
+Renaming an existing chapter file changes its URL. Search the repository for
+the old path and update every link before renaming.
+:::

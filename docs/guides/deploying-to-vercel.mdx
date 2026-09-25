@@ -1,0 +1,64 @@
+---
+title: Deploying to Vercel
+description: How this static site is built and published with Vercel.
+sidebar_position: 4
+---
+
+Korevel Xaurus is a fully static site, so deploying it is just "build, then
+host the output". Vercel is the deployment target.
+
+## How the build works
+
+```bash
+npm run build
+```
+
+This runs Docusaurus and writes the production site to the `build/` folder.
+Because `onBrokenLinks` is set to `throw` in `docusaurus.config.ts`, a
+single broken internal link fails the build - broken content never reaches
+production.
+
+## Configure the project
+
+When connecting the repository to Vercel, set:
+
+| Setting | Value |
+| --- | --- |
+| Framework preset | Docusaurus (auto-detected) |
+| Build command | `npm run build` |
+| Output directory | `build` |
+| Install command | `npm install` (default) |
+
+## Update the canonical URL first
+
+`docusaurus.config.ts` still carries a placeholder in its `url` field. Set
+it to the real deployment address before the first production deploy -
+it is used for canonical URLs, the sitemap, and feeds:
+
+```ts
+url: 'https://your-production-domain.example',
+baseUrl: '/',
+```
+
+For a custom domain on Vercel, use that domain. For the default Vercel
+domain, use the address Vercel shows in the project overview.
+
+## Deploy
+
+- **Push-based**: import the repository in Vercel; every push to `main`
+  builds and deploys automatically.
+- **Preview builds**: every branch and pull request gets its own preview
+  URL, which is the right place to check theme changes (such as gradient
+  animations in light and dark mode) before merging.
+
+## After every deploy, verify
+
+1. Navbar shows **Guides / Docs / Book** and all three resolve.
+2. Hero animation runs, and looks correct in both color modes.
+3. Footer links and the book's prev/next navigation work.
+
+:::tip
+
+Run `npm run build` locally before pushing - it surfaces broken links in
+seconds instead of failing a deploy.
+:::

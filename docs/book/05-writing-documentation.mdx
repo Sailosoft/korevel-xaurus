@@ -1,0 +1,81 @@
+---
+title: Writing Documentation
+description: "Chapter 5 - documentation as code: audience-first, versioned, and verified."
+---
+
+Documentation is part of the product. Treated as code - written in the
+repository, reviewed in pull requests, updated in the same change - it
+stays true; treated as an afterthought, it rots quietly.
+
+## By the end of this chapter
+
+You will know which documents to write, how to structure them so readers
+can skim, and how to keep them from drifting out of date.
+
+## Start from the reader
+
+Before writing, answer three questions:
+
+1. **Who is this for?** A new teammate, an operator at 3 a.m., or an
+   external user? The vocabulary and depth differ wildly.
+2. **What are they trying to do?** Tasks want steps; understanding wants
+   explanation; emergencies want checklists.
+3. **How will they arrive?** Search, a link from an alert, or reading in
+   order? The first screen must work for how they enter.
+
+If you cannot answer these, you are writing for yourself - that is a
+journal, not documentation.
+
+## Match format to job
+
+| Job | Format |
+| --- | --- |
+| How do I...? | Guide: prerequisites, numbered steps, expected result (see [Writing and Organizing Notes](/docs/guides/writing-and-organizing-notes)). |
+| What is the exact...? | Reference: tables, signatures, defaults. No prose paragraphs. |
+| Conceptual overview | Short narrative with a diagram; link out to guides and reference. |
+| Incident runbook | Checklist, ordered by likelihood, with signals and first actions. |
+
+## Structure for skimming
+
+- Front-load the answer. The first paragraph should satisfy someone who
+  reads nothing else.
+- Headings describe content ("Handling retries"), not structure
+  ("Overview").
+- One idea per section; short paragraphs; bullets for anything with more
+  than two items.
+- Code and config examples must be copy-pasteable and complete - an
+  example with missing context costs the reader a debugging session.
+
+## Keep it true
+
+- **Docs live with the change.** A pull request that alters behavior
+  updates the docs in the same diff - reviewers enforce this.
+- **Delete freely.** Outdated docs are worse than none; if a page is not
+  worth maintaining, remove it.
+- **Verify what can be verified.** Commands belong in scripts referenced
+  by docs; links are checked by the build (`onBrokenLinks: 'throw'` makes
+  a dead link a failed release).
+
+:::caution
+
+Never document what the code already proves without value (a function
+named `isEmpty` does not need a paragraph). Document intent, constraints,
+and the reasons that are invisible in the diff.
+:::
+
+## The review bar for docs
+
+- [ ] Says who it is for and what the reader will accomplish.
+- [ ] Examples run as written.
+- [ ] No unexplained jargon or acronyms on first use.
+- [ ] No statements that contradict the current behavior.
+- [ ] Links resolve (the build checks this for you).
+
+## Key takeaways
+
+- Write for a named reader with a named task.
+- Structure so the answer comes first and the page skims in ten seconds.
+- Docs are code: reviewed, versioned, and updated in the same change.
+
+Next: [Operating and Improving Systems](/docs/book/operating-and-improving-systems)
+- the last chapter: what happens after release.
