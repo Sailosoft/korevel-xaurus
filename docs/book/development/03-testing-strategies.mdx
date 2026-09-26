@@ -66,7 +66,7 @@ either fix or delete it.
 ## Keeping the suite fast
 
 - Run unit tests on every save, integration tests on every push, end-to-end
-  tests on merge - see [Continuous Integration and Delivery](/docs/book/continuous-integration-and-delivery).
+  tests on merge - see [Continuous Integration and Delivery](/docs/book/development/continuous-integration-and-delivery).
 - Parallelize by default; tests that share global state cannot parallelize
   and will eventually conflict.
 - Measure the suite. If it takes minutes, find the slowest tests first -
@@ -84,5 +84,5 @@ assertion is theater.
 - Test behavior and edge cases; every bug fix earns a regression test.
 - A fast, deterministic suite is a feature - protect it fiercely.
 
-Next: [Continuous Integration and Delivery](/docs/book/continuous-integration-and-delivery)
+Next: [Continuous Integration and Delivery](/docs/book/development/continuous-integration-and-delivery)
 - turning green tests into safe releases.

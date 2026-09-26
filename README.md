@@ -1,4 +1,4 @@
-# Korevel Xaurus
+# XRSKOV
 
 A personal knowledge base - guides, docs, and books - built with [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
