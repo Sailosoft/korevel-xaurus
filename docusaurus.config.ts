@@ -71,13 +71,7 @@ const config: Config = {
           sidebarId: 'bookSidebar',
           position: 'left',
           label: 'Book',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'wealthSidebar',
-          position: 'left',
-          label: 'Wealth',
-        },
+        }
       ],
     },
     footer: {
@@ -97,11 +91,7 @@ const config: Config = {
             {
               label: 'Book',
               to: '/docs/book',
-            },
-            {
-              label: 'Wealth Book',
-              to: '/docs/wealth-book',
-            },
+            }
           ],
         },
       ],
