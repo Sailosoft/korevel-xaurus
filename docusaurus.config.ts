@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Korevel Xaurus',
+  title: 'XRSKOV',
   tagline: 'A personal knowledge base — guides, docs, and books.',
   favicon: 'img/favicon.svg',
 
@@ -48,9 +48,9 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'Korevel Xaurus',
+      title: 'XRSKOV',
       logo: {
-        alt: 'Korevel Xaurus Logo',
+        alt: 'XRSKOV Logo',
         src: 'img/logo.svg',
       },
       items: [
@@ -71,7 +71,7 @@ const config: Config = {
           sidebarId: 'bookSidebar',
           position: 'left',
           label: 'Book',
-        },
+        }
       ],
     },
     footer: {
@@ -91,11 +91,11 @@ const config: Config = {
             {
               label: 'Book',
               to: '/docs/book',
-            },
+            }
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Korevel Xaurus. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} XRSKOV. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
