@@ -111,7 +111,27 @@ Two gotchas to remember:
 - `import` statements belong at the very top of the file, after front
   matter.
 
-## Math and diagrams
+## Diagrams (Mermaid)
 
-Not enabled in this project. Use code blocks for formulas and keep
-diagrams as images in `static/img/` if needed.
+Fence a block with `mermaid` and it renders as a diagram. Diagrams follow
+the light/dark mode (`neutral` / `dark` themes).
+
+```mermaid
+graph TD
+  A[Author] --> B[Review]
+  B --> C[Publish]
+```
+
+The source for that diagram:
+
+````md
+```mermaid
+graph TD
+  A[Author] --> B[Review]
+  B --> C[Publish]
+```
+````
+
+Syntax reference: https://mermaid.js.org/
+
+Math/KaTeX is not enabled - use code blocks for formulas.

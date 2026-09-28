@@ -89,6 +89,24 @@ prism: {
 },
 ```
 
+## Mermaid (diagrams)
+
+```ts
+markdown: {mermaid: true},
+themes: ['@docusaurus/theme-mermaid'],
+themeConfig: {
+  mermaid: {theme: {light: 'neutral', dark: 'dark'}},
+},
+```
+
+- `markdown.mermaid` enables `mermaid` fenced code blocks so they render
+  as diagrams (see the Markdown reference page).
+- `themes` loads `@docusaurus/theme-mermaid`, which supplies the
+  client-side renderer and the `themeConfig.mermaid` schema.
+- `themeConfig.mermaid.theme` pairs `neutral` with the light GitHub Prism
+  theme and `dark` with the dark Dracula Prism theme, switching with
+  color mode.
+
 ## Color mode
 
 ```ts
@@ -102,6 +120,6 @@ the reader toggle manually afterwards.
 
 | File | Contains |
 | --- | --- |
-| `src/css/custom.css` | Infima palette overrides, gradient variables, keyframes, animated accents. |
+| `src/css/custom.css` | Infima palette overrides, gradient variables, keyframes, animated accents, navbar and sidebar chrome. |
 | `src/pages/index.module.css` | Homepage hero layout (hero background animation is applied via a global class). |
 | `src/components/HomepageFeatures/styles.module.css` | Icon circles and card link styles on the homepage. |
