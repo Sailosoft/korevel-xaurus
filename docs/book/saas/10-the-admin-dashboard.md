@@ -1,6 +1,6 @@
 ---
 title: The Admin Dashboard
-description: Chapter 10 - building two admin surfaces for a SaaS: the customer's tenant admin and your platform operations console.
+description: "Chapter 10 - building two admin surfaces for a SaaS: the customer's tenant admin and your platform operations console."
 ---
 
 The word "admin" hides two very different products. One is the

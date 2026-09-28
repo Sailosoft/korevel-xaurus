@@ -1,4 +1,5 @@
-import type {ReactNode} from 'react';
+import {useEffect, useRef, useState} from 'react';
+import type {ReactNode, RefObject} from 'react';
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import Link from '@docusaurus/Link';
@@ -88,19 +89,67 @@ const FeatureList: FeatureItem[] = [
   },
 ];
 
-function Feature({title, to, icon, description}: FeatureItem) {
+function useReveal<T extends HTMLElement>(): [RefObject<T | null>, boolean] {
+  const ref = useRef<T>(null);
+  const [shown, setShown] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node || typeof IntersectionObserver === 'undefined') {
+      setShown(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      entries => {
+        if (entries.some(entry => entry.isIntersecting)) {
+          setShown(true);
+          observer.disconnect();
+        }
+      },
+      {threshold: 0.15, rootMargin: '0px 0px -5% 0px'},
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  return [ref, shown];
+}
+
+function Feature({
+  title,
+  to,
+  icon,
+  description,
+  index,
+}: FeatureItem & {index: number}) {
+  const [ref, shown] = useReveal<HTMLDivElement>();
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <span className={styles.featureIcon}>{icon}</span>
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">
-          <Link className={styles.featureLink} to={to}>
+    <div className={clsx('col col--4', styles.featureCol)}>
+      <div
+        ref={ref}
+        className={clsx(styles.reveal, shown && styles.revealShown)}
+        style={{transitionDelay: `${index * 120}ms`}}>
+        <Link className={styles.featureCard} to={to}>
+          <span className={styles.featureIcon}>{icon}</span>
+          <Heading as="h3" className={styles.featureTitle}>
             {title}
-          </Link>
-        </Heading>
-        <p>{description}</p>
+          </Heading>
+          <p className={styles.featureDescription}>{description}</p>
+          <span className={styles.featureCta}>
+            Explore
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true">
+              <path d="M7 17 17 7" />
+              <path d="M7 7h10v10" />
+            </svg>
+          </span>
+        </Link>
       </div>
     </div>
   );
@@ -108,11 +157,21 @@ function Feature({title, to, icon, description}: FeatureItem) {
 
 export default function HomepageFeatures(): ReactNode {
   return (
-    <section className={styles.features}>
+    <section className={styles.features} id="explore">
       <div className="container">
+        <div className={styles.sectionHeader}>
+          <p className={styles.sectionEyebrow}>Browse</p>
+          <Heading as="h2" className={styles.sectionTitle}>
+            Pick a collection
+          </Heading>
+          <p className={styles.sectionLead}>
+            Follow the guides for hands-on tasks, look things up in the
+            reference, or read the handbook cover to cover.
+          </p>
+        </div>
         <div className="row">
           {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
+            <Feature key={props.title} index={idx} {...props} />
           ))}
         </div>
       </div>
