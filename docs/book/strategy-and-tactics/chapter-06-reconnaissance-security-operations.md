@@ -1,5 +1,4 @@
-# Strategic Advance & Tactical Operations Trainer
-## Chapter 6 — Reconnaissance and Security Operations
+# Chapter 6 — Reconnaissance and Security Operations
 
 **Series:** Strategic Advance & Tactical Operations Trainer (Chapter 6 of 10)
 

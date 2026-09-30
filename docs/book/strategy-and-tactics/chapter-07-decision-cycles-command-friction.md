@@ -1,5 +1,4 @@
-# Strategic Advance & Tactical Operations Trainer
-## Chapter 7 — Decision Cycles and Command Under Friction
+# Chapter 7 — Decision Cycles and Command Under Friction
 
 **Series:** Strategic Advance & Tactical Operations Trainer (Chapter 7 of 10)
 

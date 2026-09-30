@@ -1,5 +1,4 @@
-# Strategic Advance & Tactical Operations Trainer
-## Chapter 5 — Movement Formations and Convoys
+# Chapter 5 — Movement Formations and Convoys
 
 **Series:** Strategic Advance & Tactical Operations Trainer (Chapter 5 of 10)
 

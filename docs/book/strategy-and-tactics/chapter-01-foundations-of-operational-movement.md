@@ -1,5 +1,4 @@
-# Strategic Advance & Tactical Operations Trainer
-## Chapter 1 — Foundations of Operational Movement
+# Chapter 1 — Foundations of Operational Movement
 
 **Series:** Strategic Advance & Tactical Operations Trainer (Chapter 1 of 10)
 **Purpose:** Train operators, planners, and unit leaders in strategic advance planning and tactical execution of operational movement across any domain — ground, urban, maritime, aerial, and cyber-physical.

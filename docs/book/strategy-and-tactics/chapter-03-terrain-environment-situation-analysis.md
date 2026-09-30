@@ -1,5 +1,4 @@
-# Strategic Advance & Tactical Operations Trainer
-## Chapter 3 — Terrain, Environment, and Situation Analysis
+# Chapter 3 — Terrain, Environment, and Situation Analysis
 
 **Series:** Strategic Advance & Tactical Operations Trainer (Chapter 3 of 10)
 

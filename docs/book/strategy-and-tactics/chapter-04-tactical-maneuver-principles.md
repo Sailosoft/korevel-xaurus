@@ -1,5 +1,4 @@
-# Strategic Advance & Tactical Operations Trainer
-## Chapter 4 — Tactical Maneuver Principles
+# Chapter 4 — Tactical Maneuver Principles
 
 **Series:** Strategic Advance & Tactical Operations Trainer (Chapter 4 of 10)
 

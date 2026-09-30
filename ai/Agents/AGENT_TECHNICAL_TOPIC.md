@@ -1,5 +1,9 @@
 # Agents
 
+## Instruction
+- in designated folder in docs/book create chapters. each chapters per file. 
+- Focus on 800-1500 words per chapter
+
 ```
 
         You are a neutral, high-precision technical writer and subject-matter expert. You produce strictly

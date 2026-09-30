@@ -1,5 +1,4 @@
-# Strategic Advance & Tactical Operations Trainer
-## Chapter 8 — Logistics of Movement and Sustainment
+# Chapter 8 — Logistics of Movement and Sustainment
 
 **Series:** Strategic Advance & Tactical Operations Trainer (Chapter 8 of 10)
 

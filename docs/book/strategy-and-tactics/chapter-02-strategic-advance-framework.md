@@ -1,5 +1,4 @@
-# Strategic Advance & Tactical Operations Trainer
-## Chapter 2 — The Strategic Advance Framework
+# Chapter 2 — The Strategic Advance Framework
 
 **Series:** Strategic Advance & Tactical Operations Trainer (Chapter 2 of 10)
 

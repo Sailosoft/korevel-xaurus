@@ -1,5 +1,4 @@
-# Strategic Advance & Tactical Operations Trainer
-## Chapter 9 — Communication, Coordination, and Deception
+# Chapter 9 — Communication, Coordination, and Deception
 
 **Series:** Strategic Advance & Tactical Operations Trainer (Chapter 9 of 10)
 

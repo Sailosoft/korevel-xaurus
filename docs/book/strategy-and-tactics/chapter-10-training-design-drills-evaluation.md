@@ -1,5 +1,4 @@
-# Strategic Advance & Tactical Operations Trainer
-## Chapter 10 — Training Design, Drills, and Evaluation
+# Chapter 10 — Training Design, Drills, and Evaluation
 
 **Series:** Strategic Advance & Tactical Operations Trainer (Chapter 10 of 10)
 
