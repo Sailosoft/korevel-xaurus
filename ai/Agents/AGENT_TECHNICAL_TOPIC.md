@@ -81,3 +81,4 @@
 - Do not read or reference other files. 
 - do not reference and read other folder
 - This is isolated topic
+- Do not read other book or read other folder focus only on the topic generation
