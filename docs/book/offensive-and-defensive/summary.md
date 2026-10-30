@@ -1,0 +1,23 @@
+# Summary: The Strategist's Return
+
+This book began with a city that had both roads and walls, and with the suspicion that most of us are better at one than the other. Its argument can now be stated plainly. Offense and defense are not rival philosophies. They are the two conditions of any continuing action: the will to change the world and the will to remain capable of living in it. Strategy is the discipline of holding them together when circumstance pushes toward one.
+
+The first movement of that discipline is sight. Before we can choose between advancing and holding, we must see the field as it is, including the parts that flatter neither our ambition nor our fear. The map is not the terrain. The story is not the evidence. The thing we refuse to look at is often the thing that determines the outcome. Clear sight is not a preliminary to strategy; it is already strategy, because it decides which world we are responding to.
+
+The second movement is initiative. Waiting is not neutral; it is a vote for the arrangement that already exists. To act is to disturb the present and to own the disturbance. Courage is not the absence of fear but the willingness to act while accounting for the cost. The strategist acts without recklessness, waits without hiding, and accepts that every real goal imposes a price on someone, including himself.
+
+The third movement is defense. Not the anxiety of the guarded, but the architecture of the durable: reserves, redundancy, boundaries that discriminate rather than walls that exclude. A defense worth having protects the conditions of action rather than replacing action. It is built in ordinary times, when no one can see its value, and it is measured by whether it leaves the person or institution more capable of living, not less.
+
+The fourth movement is economy. Force is finite. Every yes displaces something, every front consumes coordination, every addition makes subtraction harder. The strategist concentrates on the main effort, sequences the rest, and accepts the grief of finitude. Saying no is not a failure of generosity. It is the protection of the future that generosity is for.
+
+The fifth movement is fieldcraft. The field will never be fully legible, and the strategist does not wait for clarity that will not come. He separates signal from noise, reads tempo, prepares scenarios, and commits while remaining corrigible. He judges decisions by their process as well as their outcome, and he returns to the field after every move rather than defending the move after the fact.
+
+The sixth movement is ethics. Advantage obtained by methods that corrode trust is a withdrawal from a reserve that must someday be repaid. Legitimacy lowers the cost of every future request. Restraint, exercised with a long horizon, is not weakness but the refusal to spend the conditions of future advantage on the present one. Character is a fortification, and the person you become while winning is part of the win.
+
+The seventh movement is organization. Institutions are bodies, not machines. They interpret, resist, remember, and tire. Command without omniscience requires distributed judgment and trust. Trust is the connective tissue that lowers the cost of coordination, and dissent is the immune system that keeps bad news traveling. Culture is the climate in which strategy either grows or dies, and it is changed by consequences, not by declarations.
+
+The eighth movement is defeat. Loss is information before it is identity. The strategist extracts the specific lesson without accepting the global verdict, stabilizes before planning the comeback, and rebuilds a structure that incorporates what was learned. Compounding rewards consistency and punishes catastrophe, which is why defense is not separate from the long game. It is what makes the long game survivable.
+
+The final movement is integration. A life is not a strategy meeting, but it can be coherent. Growth and safety can serve each other. Advance and consolidation can alternate without either becoming an identity. Goals can be commitments rather than wishes, resourced and bounded and honestly priced. Reserves can create freedom rather than fear. The creed is not a guarantee of victory. It is a way of continuing that leaves the person able to live with what he has done.
+
+So the strategist returns. To the field, to the question, to the ordinary Tuesday on which the whole discipline is either practiced or abandoned. There is no final resolution of the tension between the road and the wall, only a life in which the tension is held with increasing skill. The last question is the one you carry: what are you building that deserves both your ambition and your protection, and what will you do, today, to keep it alive?
